@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - three-tier
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-container
+    ports:
+      - "8000:8000"
+    networks:
+      - three-tier
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-container
+    networks:
+      - three-tier
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    
+
+networks:
+  three-tier:
+
+
