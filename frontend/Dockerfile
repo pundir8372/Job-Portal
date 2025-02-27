@@ -5,7 +5,7 @@ FROM node:21 as frontend-builder
 WORKDIR /app
 
 
-COPY package*.json .
+COPY package.json package-lock.json ./
 
 
 RUN npm i
