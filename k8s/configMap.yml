@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: job-portal-config
+  namespace: sahil-namespace
+data:
+  PORT: "8000"
+  CLOUD_NAME: "dvta1s9ru"
+

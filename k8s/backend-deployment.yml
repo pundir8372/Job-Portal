@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: sahil-namespace
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: pundirsahil/jobportal-backend-image
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: job-portal-config
+        - secretRef:
+            name: mongodb-secret
+        
