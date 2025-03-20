@@ -26,6 +26,12 @@ app.use(cors(corsOptions));
 const PORT = process.env.PORT || 3000;
 
 
+// Health Check API
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'UP' });
+});
+
+
 // api's
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
@@ -34,7 +40,7 @@ app.use("/api/v1/application", applicationRoute);
 
 
 
-app.listen(PORT,()=>{
+app.listen(PORT, '0.0.0.0',()=>{
     connectDB();
     console.log(`Server running at port ${PORT}`);
 })

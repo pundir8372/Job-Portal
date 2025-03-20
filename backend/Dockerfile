@@ -24,7 +24,10 @@ WORKDIR /app
 COPY --from=backend-builder /app .
 
 
+RUN apt-get update && apt-get install -y curl
+
+
 EXPOSE 8000
 
 
-CMD ["npm" , "run" , "dev"]
+CMD ["npm" , "run" , "start"]
