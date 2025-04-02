@@ -17,8 +17,14 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: pundirsahil/jobportal-frontend-image
+        image: pundirsahil/jobportal-frontend
         ports:
         - containerPort: 5173
-
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 500Mi
 

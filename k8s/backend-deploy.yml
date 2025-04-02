@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
       - name: backend-container
-        image: pundirsahil/jobportal-backend-image
+        image: pundirsahil/jobportal-backend
         ports:
         - containerPort: 8000
         envFrom:
         - configMapRef:
-            name: job-portal-config
+            name: jobportal-config
         - secretRef:
             name: mongodb-secret
         
